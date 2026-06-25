@@ -1,0 +1,924 @@
+.account-header .account-title {
+  opacity: 0;
+  animation: smoothReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.1s;
+}
+
+.account-header .account-subtitle {
+  opacity: 0;
+  animation: smoothReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
+}
+
+.account-sidebar {
+  opacity: 0;
+  animation: smoothReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.3s;
+}
+
+.lune-id-card {
+  opacity: 0;
+  animation: smoothReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.4s;
+}
+
+.profile-details {
+  opacity: 0;
+  animation: smoothReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.5s;
+}
+
+.account-tab-content {
+  display: none;
+  opacity: 0;
+
+  &.active {
+    display: block;
+    animation: smoothReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+}
+
+.orders-list > *,
+.address-list-container > *,
+#wishlist-container > * {
+  opacity: 0;
+  animation: smoothReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.orders-list > *:nth-child(1),
+.address-list-container > *:nth-child(1),
+#wishlist-container > *:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.orders-list > *:nth-child(2),
+.address-list-container > *:nth-child(2),
+#wishlist-container > *:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.orders-list > *:nth-child(3),
+.address-list-container > *:nth-child(3),
+#wishlist-container > *:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.orders-list > *:nth-child(4),
+.address-list-container > *:nth-child(4),
+#wishlist-container > *:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.orders-list > *:nth-child(5),
+.address-list-container > *:nth-child(5),
+#wishlist-container > *:nth-child(5) {
+  animation-delay: 0.5s;
+}
+
+/* ==========================================================================
+   Account Dashboard
+   ========================================================================== */
+
+.account-page-main {
+  padding-top: 40px;
+  padding-bottom: 80px;
+  min-height: 80vh;
+}
+
+.account-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+
+  @media (min-width: 992px) {
+    grid-template-columns: 240px 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+}
+
+/* ─── Sidebar Menu ─── */
+.account-nav {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  gap: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @media (min-width: 992px) {
+    flex-direction: column;
+    overflow-x: visible;
+    border-bottom: none;
+    padding-bottom: 0;
+    gap: 16px;
+    position: sticky;
+    top: 120px;
+  }
+}
+
+.account-nav-link {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+
+  &:hover,
+  &.active {
+    color: var(--color-text);
+  }
+
+  &.sign-out {
+    margin-top: 0;
+    @media (min-width: 992px) {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--color-border);
+    }
+  }
+}
+
+/* ─── Main Content ─── */
+.account-header {
+  margin-bottom: 48px;
+}
+
+.account-title {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 4vw, 36px);
+  font-weight: 400;
+  margin: 0 0 8px 0;
+  color: var(--color-text);
+}
+
+.account-subtitle {
+  font-size: 14px;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.account-dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+
+  @media (min-width: 1200px) {
+    grid-template-columns: 360px 1fr;
+    align-items: start;
+  }
+}
+
+/* ─── Digital ID Card ─── */
+.lune-id-card {
+  background: var(--color-text);
+  color: var(--bg-body);
+  border-radius: 12px;
+  padding: 32px;
+  aspect-ratio: 1.586;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transform: skewX(-20deg);
+  }
+
+  [data-theme="light"] & {
+    background: #101014;
+    color: #ffffff;
+  }
+}
+
+.id-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.id-logo {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  letter-spacing: 0.1em;
+}
+
+.id-status {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.id-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.lune-id-card .id-info {
+  margin-left: 10px;
+}
+
+.id-info {
+  border-left: 1px solid;
+  padding-left: 16px;
+}
+
+.id-scan-hint {
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-top: 12px;
+  opacity: 0.5;
+  font-family: var(--font-sans);
+}
+
+.id-name {
+  font-size: 16px;
+  letter-spacing: 0.05em;
+  margin: 0 0 4px 0;
+}
+
+.id-member-since {
+  font-size: 8px;
+  letter-spacing: 0.15em;
+  opacity: 0.3;
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+.id-number {
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  opacity: 0.4;
+  margin: 0;
+  font-family: monospace;
+}
+
+.id-qr-code {
+  width: 64px;
+  height: 64px;
+  background: #fff;
+  padding: 4px;
+  border-radius: 4px;
+
+  img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+}
+
+/* ─── Recent Orders ─── */
+.section-heading {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0 0 24px 0;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.order-card {
+  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.01);
+  padding: 24px;
+
+  [data-theme="light"] & {
+    background: rgba(0, 0, 0, 0.01);
+  }
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.order-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.order-number {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.order-date {
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.order-status {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 2px;
+  font-weight: 500;
+
+  &.processing {
+    background: rgba(200, 150, 50, 0.1);
+    color: #d4a351;
+  }
+
+  &.delivered {
+    background: rgba(50, 200, 100, 0.1);
+    color: #4caf50;
+  }
+}
+
+.order-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 16px;
+}
+
+.order-items-preview {
+  display: flex;
+  gap: 8px;
+}
+
+.item-img-placeholder {
+  width: 48px;
+  height: 64px;
+  background: var(--color-border);
+  border-radius: 2px;
+}
+
+.order-total {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+
+  span:first-child {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  span:last-child {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+}
+
+.order-footer {
+  display: flex;
+  gap: 24px;
+}
+
+.order-action-link {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+/* ─── Tabs Functionality ─── */
+.account-tab-content {
+  display: none;
+  animation: fadeSlideUp 0.4s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+
+  &.active {
+    display: block;
+  }
+}
+
+.account-placeholder-text {
+  font-size: 14px;
+  color: var(--color-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Account Dashboard - Dynamic Sections
+   ========================================================================== */
+
+/* ─── Address Book ─── */
+.address-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.address-card {
+  border: 1px solid var(--color-border);
+  padding: 16px;
+  border-radius: 2px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.02);
+  transition: border-color 0.3s ease;
+
+  [data-theme="light"] & {
+    background: rgba(0, 0, 0, 0.02);
+  }
+
+  .address-info p {
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .addr-name {
+    font-weight: 500;
+    font-size: 14px;
+    margin-bottom: 4px;
+    color: var(--color-text);
+  }
+
+  .addr-details {
+    color: var(--color-muted);
+    font-size: 13px;
+  }
+
+  .remove-address-btn {
+    background: none;
+    border: none;
+    color: var(--color-muted);
+    font-size: 12px;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: 0;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--color-text);
+    }
+  }
+}
+
+.add-address-form {
+  display: none;
+  margin-top: 24px;
+  max-width: 400px;
+  flex-direction: column;
+  gap: 16px;
+
+  &.active {
+    display: flex;
+  }
+
+  input {
+    padding: 12px;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    width: 100%;
+    font-family: var(--font-sans);
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-text);
+    }
+  }
+
+  .form-row {
+    display: flex;
+    gap: 16px;
+
+    .input-city {
+      flex: 1;
+    }
+    .input-zip {
+      width: 120px;
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+
+    button {
+      flex: 1;
+      padding: 12px;
+    }
+  }
+}
+
+.add-address-trigger {
+  margin-top: 24px;
+  display: inline-block;
+  padding: 12px 24px;
+
+  &.hidden {
+    display: none;
+  }
+}
+
+/* ─── Order History Images ─── */
+.order-items-preview {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  img {
+    width: 56px;
+    height: 72px;
+    object-fit: cover;
+    border-radius: 2px;
+    border: 1px solid var(--color-border);
+  }
+}
+
+/* ─── QR Code Modal ─── */
+.qr-modal-overlay {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+
+  &.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .qr-modal-content {
+    background: var(--bg-body, #ffffff);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding: 40px 20px;
+
+    @media (min-width: 768px) {
+      width: 420px;
+      height: 85vh;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    }
+
+    .qr-center-wrap {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
+
+    img {
+      width: 220px;
+      height: 220px;
+      background: #fff;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 32px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .qr-modal-subtitle {
+      font-size: 14px;
+      color: var(--color-text);
+      opacity: 0.8;
+      margin: 0;
+    }
+
+    .qr-tc-link {
+      background: none;
+      border: none;
+      color: var(--color-text);
+      font-size: 11px;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 10px;
+      margin-top: auto;
+    }
+  }
+
+  .qr-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 24px;
+    background: none;
+    border: none;
+    font-size: 32px;
+    font-weight: 300;
+    cursor: pointer;
+    color: var(--color-text);
+    padding: 0;
+    line-height: 1;
+  }
+}
+
+/* ─── T&C Modal (Purchase Conditions) ─── */
+.tc-modal-overlay {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999999;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+
+  &.active {
+    display: flex;
+    animation: slideUpFade 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .tc-modal-content {
+    background: var(--bg-body, #ffffff);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 768px) {
+      width: 500px;
+      height: 85vh;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  .tc-modal-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    border-bottom: 1px solid var(--color-border);
+    position: relative;
+
+    h3 {
+      margin: 0;
+      font-size: 13px;
+      letter-spacing: 0.05em;
+      font-weight: 500;
+      text-transform: uppercase;
+      color: var(--color-text);
+    }
+
+    .tc-modal-close {
+      position: absolute;
+      right: 24px;
+      background: none;
+      border: none;
+      font-size: 13px;
+      cursor: pointer;
+      color: var(--color-text);
+      letter-spacing: 0.05em;
+    }
+  }
+
+  .tc-modal-body {
+    padding: 32px 24px;
+    overflow-y: auto;
+    flex: 1;
+    color: var(--color-text);
+
+    h2 {
+      font-size: 24px;
+      margin: 0 0 24px 0;
+      font-weight: 500;
+    }
+
+    h4 {
+      margin: 24px 0 12px 0;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+    }
+
+    p {
+      margin-bottom: 16px;
+      font-size: 12px;
+      line-height: 1.6;
+      opacity: 0.8;
+    }
+  }
+}
+
+/* ─── Profile Edit Form ─── */
+.edit-profile-trigger {
+  background: none;
+  border: none;
+  cursor: pointer;
+  margin-top: 16px;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  padding: 0;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
+
+.edit-profile-form {
+  display: none;
+  margin-top: 20px;
+  gap: 12px;
+  flex-direction: column;
+  max-width: 300px;
+
+  &.active {
+    display: flex;
+  }
+
+  input {
+    padding: 10px;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: 14px;
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-text);
+    }
+  }
+
+  .btn-primary {
+    padding: 10px;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 767px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .lune-id-card,
+  .profile-details,
+  .account-container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .lune-id-card {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 1.586;
+    height: auto;
+    padding: 20px;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+  .id-card-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+    margin-top: auto;
+  }
+
+  .account-page-main,
+  .account-layout,
+  .account-dashboard-grid {
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+  }
+
+  .id-name {
+    font-size: 16px;
+  }
+
+  .id-qr-code {
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+  }
+
+  .id-info {
+    border-left: none;
+    padding-left: 0;
+    opacity: 0.9;
+  }
+
+  .lune-id-card .id-info {
+    margin-left: 0;
+  }
+
+  .account-nav {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 20px;
+    padding-bottom: 12px;
+    padding-right: 16px;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .account-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .account-nav-link.sign-out {
+    display: none;
+  }
+
+  .sign-out-mobile {
+    display: block;
+    margin-top: 40px;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    text-decoration: none;
+    border-top: 1px solid var(--color-border);
+    padding-top: 16px;
+    width: 100%;
+    text-align: left;
+  }
+
+  .account-sidebar {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: visible;
+  }
+
+  .account-layout {
+    overflow-x: visible;
+  }
+
+  .account-nav-link {
+    white-space: nowrap;
+    flex-shrink: 0;
+    padding-bottom: 4px;
+    border-bottom: 1px solid transparent;
+  }
+
+  .account-nav-link.active {
+    color: var(--color-text);
+    border-bottom-color: var(--color-text);
+  }
+
+  .account-content {
+    overflow-x: hidden;
+  }
+}
+
+@media (min-width: 768px) {
+  .hidden-desktop {
+    display: none;
+  }
+}

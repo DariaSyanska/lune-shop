@@ -1,0 +1,28 @@
+@use "../utilities/mixins" as *;
+
+/* ─── Loading screen ─── */
+.preloader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-body);
+  z-index: 3000;
+  touch-action: none;
+  transition:
+    opacity 0.6s cubic-bezier(0.25, 1, 0.5, 1),
+    visibility 0.6s ease;
+
+  @include flex-center;
+
+  &.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+/* ─── Logo inside the preloader ─── */
+.preloader-logo {
+  width: 220px;
+  max-width: 70vw;
+  animation: preloader-pulse 2s ease-in-out infinite;
+}

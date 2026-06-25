@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en-GB" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Lune — high-end minimal fashion inspired by moonlight aesthetics."
+    />
+    <meta property="og:title" content="Lune Fashion" />
+    <meta
+      property="og:description"
+      content="High-end minimal fashion inspired by moonlight."
+    />
+    <meta property="og:image" content="/images/preview.jpg" />
+    <meta property="og:type" content="website" />
+    <title>Account Login | Lune</title>
+
+    <script>
+      (function () {
+        try {
+          var currentTheme = localStorage.getItem("lune-theme") || "dark";
+          document.documentElement.setAttribute("data-theme", currentTheme);
+        } catch (e) {}
+      })();
+    </script>
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="/images/favicon-dark.png"
+      id="favicon"
+    />
+    <link rel="stylesheet" href="/src/styles/main.scss" />
+    <style>
+      html {
+        background-color: var(--bg-body, #101014);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="header-container">
+        <a href="index.html" class="header-logo">
+          <img
+            src="/images/nav-bar-dark.png"
+            alt="Lune"
+            class="logo-img logo-dark"
+            loading="eager"
+            decoding="async"
+          />
+          <img
+            src="/images/nav-bar.png"
+            alt="Lune"
+            class="logo-img logo-light"
+            loading="eager"
+            decoding="async"
+          />
+        </a>
+
+        <nav class="header-nav" id="mobile-nav">
+          <div class="nav-header">
+            <button
+              class="burger-btn active"
+              id="burger-close"
+              aria-label="Close menu"
+            >
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+
+          <ul class="nav-list">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="catalog.html" class="nav-link">Shop</a></li>
+            <li class="separator">/</li>
+            <li><span class="current-page">Login</span></li>
+            <li class="mobile-only-link" style="display: none">
+              <a href="login.html" class="nav-link">Login</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button
+            type="button"
+            class="icon-btn"
+            aria-label="Search"
+            id="search-open"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.35-4.35" />
+            </svg>
+          </button>
+          <button
+            class="icon-btn"
+            aria-label="Cart"
+            id="cart-open"
+            style="position: relative"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.2"
+            >
+              <path
+                d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"
+              ></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+
+            <span class="cart-count" style="display: none">0</span>
+          </button>
+
+          <button
+            class="burger-btn"
+            id="burger-btn"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <button
+            type="button"
+            class="theme-toggle"
+            id="theme-toggle"
+            aria-label="Toggle theme"
+          >
+            <svg
+              class="icon-moon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+            <svg
+              class="icon-sun"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-offset auth-page">
+      <div class="auth-container">
+        <!-- ─── LOGIN FORM ─── -->
+        <div class="auth-form-wrapper active" id="login-view">
+          <h1 class="auth-title">Sign In</h1>
+          <p class="auth-subtitle">Access your account and digital ID.</p>
+
+          <form class="auth-form" id="login-form">
+            <div class="input-field-wrapper">
+              <input type="text" id="login-email" required placeholder=" " />
+              <label for="login-email">Email or Phone Number</label>
+            </div>
+            <div class="input-field-wrapper">
+              <input
+                type="password"
+                id="login-password"
+                required
+                placeholder=" "
+              />
+              <label for="login-password">Password</label>
+            </div>
+
+            <button type="submit" class="btn-primary auth-submit-btn">
+              Sign In
+            </button>
+          </form>
+
+          <div class="auth-footer">
+            <a href="#" class="auth-link">Forgot password?</a>
+            <button class="auth-switch-btn" data-target="register-view">
+              Create an account
+            </button>
+          </div>
+        </div>
+
+        <!-- ─── REGISTER FORM ─── -->
+        <div class="auth-form-wrapper" id="register-view">
+          <h1 class="auth-title">Create Account</h1>
+          <p class="auth-subtitle">Join Lune for exclusive access.</p>
+
+          <form class="auth-form" id="register-form">
+            <div class="input-field-wrapper">
+              <input type="text" id="reg-name" required placeholder=" " />
+              <label for="reg-name">First Name</label>
+            </div>
+            <div class="input-field-wrapper">
+              <input type="text" id="reg-email" required placeholder=" " />
+              <label for="reg-email">Email or Phone Number</label>
+            </div>
+            <div class="input-field-wrapper">
+              <input
+                type="password"
+                id="reg-password"
+                required
+                placeholder=" "
+                minlength="6"
+              />
+              <label for="reg-password">Password</label>
+            </div>
+
+            <button type="submit" class="btn-primary auth-submit-btn">
+              Register
+            </button>
+          </form>
+
+          <div class="auth-footer">
+            <span class="auth-text">Already have an account?</span>
+            <button class="auth-switch-btn" data-target="login-view">
+              Sign In
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" id="contacts">
+      <div class="footer-container footer-layout">
+        <div class="footer-column footer-contacts">
+          <div class="contact-card">
+            <a class="footer-link" href="mailto:hello@lune-store.com">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.2"
+              >
+                <path
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+              <div class="contact-text">
+                <span class="contact-label">Email</span>
+                <span class="contact-value">hello@lune-store.com</span>
+              </div>
+            </a>
+          </div>
+          <div class="contact-card">
+            <a class="footer-link" href="tel:+33624766107">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.2"
+              >
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                <line
+                  x1="12"
+                  y1="18"
+                  x2="12.01"
+                  y2="18"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <div class="contact-text">
+                <span class="contact-label">Phone</span>
+                <span class="contact-value">+33 624766107</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-column footer-center">
+          <div class="footer_socials">
+            <a
+              href="https://facebook.com/lune_store"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
+              <svg class="footer_socials-icon" width="30" height="30">
+                <use href="./images/icons.svg#icon-facebook"></use>
+              </svg>
+            </a>
+            <a
+              href="https://instagram.com/lune_store"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <svg class="footer_socials-icon" width="30" height="30">
+                <use href="./images/icons.svg#icon-instagram"></use>
+              </svg>
+            </a>
+          </div>
+          <nav class="footer-legal">
+            <a href="terms.html" class="legal-link">Terms of Use</a>
+            <a href="privacy.html" class="legal-link">Privacy Policy</a>
+          </nav>
+        </div>
+
+        <div class="footer-column footer-right">
+          <p class="footer-copyright">
+            All rights reserved. Lune. &copy; <span id="year"></span>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

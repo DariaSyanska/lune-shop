@@ -1,0 +1,496 @@
+@use "../utilities/mixins" as *;
+
+/* ==========================================================================
+   Global Page Offsets & Shared Headers
+   ========================================================================== */
+
+.page-offset {
+  padding-top: 80px;
+}
+
+.service-header-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px 0;
+
+  @include from(tablet) {
+    padding: 40px 48px 0;
+  }
+}
+
+.service-main-title {
+  font-family: var(--font-serif);
+  font-size: clamp(36px, 5vw, 48px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  margin: 10px 0 40px 0;
+  color: var(--color-text);
+}
+
+/* ==========================================================================
+   Legal Sections (Privacy & Terms)
+   ========================================================================== */
+
+.legal-section {
+  padding: 120px 24px 40px;
+  background-color: var(--bg-body);
+  display: flow-root;
+  min-height: 100vh;
+
+  @include from(tablet) {
+    padding: 180px 24px 140px;
+  }
+}
+
+.legal-container {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.legal-header {
+  text-align: center;
+  margin-bottom: 72px;
+
+  .legal-title {
+    font-family: var(--font-serif);
+    font-size: clamp(40px, 6vw, 56px);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--color-text);
+    margin: 0 0 16px 0;
+  }
+
+  .legal-date {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin: 0;
+  }
+}
+
+.legal-content {
+  color: var(--color-text);
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 400;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
+  @include from(tablet) {
+    font-size: 15px;
+  }
+
+  p {
+    margin-bottom: 24px;
+  }
+
+  a {
+    color: var(--color-text);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    transition: opacity 0.3s ease;
+    outline: none;
+
+    &:hover,
+    &:focus-visible {
+      opacity: 0.5;
+    }
+  }
+
+  ul {
+    list-style-type: disc;
+    padding-left: 24px;
+    margin-bottom: 40px;
+
+    li {
+      margin-bottom: 12px;
+      padding-left: 8px;
+
+      &::marker {
+        color: var(--color-muted);
+      }
+    }
+  }
+}
+
+.legal-intro {
+  font-size: 16px;
+  line-height: 1.6;
+  text-align: left;
+  margin-bottom: 56px !important;
+}
+
+.legal-subtitle {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin: 64px 0 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ==========================================================================
+   Service Center & Shipping Info
+   ========================================================================== */
+
+.service-block h3,
+.returns-block h3,
+.service-faq-section h3 {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(18px, 2vw, 22px);
+  letter-spacing: 0.01em;
+  margin-bottom: 20px;
+  color: var(--color-text);
+}
+
+.service-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+  align-items: start;
+
+  @include from(tablet) {
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 80px;
+    padding: 0 48px 40px;
+  }
+}
+
+.shipping-rates-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 32px;
+  border-top: 1px solid var(--color-border);
+
+  li {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "name price"
+      "time time";
+    row-gap: 6px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 14px;
+    color: var(--color-muted);
+
+    @include from(tablet) {
+      grid-template-columns: 1.5fr 1.5fr 0.5fr;
+      grid-template-areas: "name time price";
+      row-gap: 0;
+      align-items: center;
+      padding: 16px 0;
+    }
+  }
+}
+
+.rate-name {
+  grid-area: name;
+  color: var(--color-text);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.rate-time {
+  grid-area: time;
+  font-size: 13px;
+  line-height: 1.5;
+
+  @include from(tablet) {
+    font-size: 14px;
+  }
+}
+
+.rate-price {
+  grid-area: price;
+  text-align: right;
+  color: var(--color-text);
+  font-weight: 400;
+}
+
+.returns-block {
+  margin-top: 40px;
+
+  @include from(tablet) {
+    margin-top: 32px;
+  }
+
+  h3 {
+    margin-bottom: 20px;
+    color: var(--color-text);
+  }
+}
+
+.service-email-link {
+  color: var(--color-text);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 0.3s ease;
+  border-radius: 2px;
+  outline: none;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--color-accent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+  }
+}
+
+/* ==========================================================================
+   FAQ Accordion Component
+   ========================================================================== */
+
+.faq-accordion {
+  margin-top: 32px;
+  border-top: 1px solid var(--color-border);
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--color-border);
+
+  &.active {
+    .faq-arrow {
+      transform: rotate(180deg);
+
+      &::after {
+        transform: scaleY(0);
+      }
+    }
+  }
+}
+
+.faq-trigger {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--color-text);
+  cursor: pointer;
+  outline: none;
+  border-radius: 2px;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--color-accent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -2px;
+  }
+}
+
+.faq-arrow {
+  width: 12px;
+  height: 12px;
+  position: relative;
+  transition: transform 0.3s ease;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    background-color: currentColor;
+    transition: transform 0.3s ease;
+  }
+
+  &::before {
+    top: 50%;
+    left: 0;
+    width: 12px;
+    height: 1px;
+    transform: translateY(-50%);
+  }
+
+  &::after {
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 12px;
+    transform: translateX(-50%);
+  }
+}
+
+.faq-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+
+  .faq-item.active & {
+    grid-template-rows: 1fr;
+  }
+
+  > div {
+    overflow: hidden;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--color-muted);
+    padding: 0 0 24px 0;
+    margin: 0;
+  }
+}
+
+/* ==========================================================================
+   404 Error Page
+   ========================================================================== */
+
+.error-page-main {
+  flex: 1;
+  padding: 80px 24px;
+  @include flex-center;
+}
+
+.error-content-wrapper {
+  max-width: 580px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  text-align: center;
+
+  .error-title {
+    margin-bottom: 8px;
+  }
+}
+
+.error-code {
+  font-family: var(--font-serif);
+  font-size: clamp(80px, 10vw, 120px);
+  font-weight: 300;
+  line-height: 1;
+  color: var(--color-accent);
+  opacity: 0.3;
+  letter-spacing: -0.02em;
+}
+
+.error-title {
+  font-family: var(--font-serif);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 400;
+  margin: -20px 0 0 0;
+  color: var(--color-text);
+}
+
+.error-text {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--color-muted);
+  margin: 0 0 16px 0;
+}
+
+/* ==========================================================================
+   Search Overlay
+   ========================================================================== */
+
+.search-overlay {
+  position: fixed;
+  inset: 0;
+  background: color-mix(in srgb, var(--bg-body) 95%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 3000;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    visibility 0.4s ease;
+  @include flex-center;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.search-container {
+  width: 90%;
+  max-width: 800px;
+  text-align: center;
+  position: relative;
+}
+
+#search-input {
+  width: 100%;
+  background: none;
+  border: none;
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-family: var(--font-serif);
+  color: var(--color-text);
+  text-align: center;
+  padding: 20px 0;
+  outline: none;
+
+  &::placeholder {
+    color: var(--color-muted);
+    opacity: 0.5;
+  }
+}
+
+.search-line {
+  height: 1px;
+  background: var(--color-text);
+  width: 0;
+  margin: 0 auto;
+  transition: width 0.6s cubic-bezier(0.25, 1, 0.5, 1) 0.2s;
+
+  .search-overlay.active & {
+    width: 100%;
+  }
+}
+
+.search-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: var(--color-text);
+  outline: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  transition:
+    transform 0.3s ease,
+    color 0.2s ease;
+  @include flex-center;
+
+  @include from(tablet) {
+    top: 40px;
+    right: 40px;
+    font-size: 2.5rem;
+  }
+
+  &:hover {
+    transform: rotate(90deg);
+    color: var(--color-accent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+  }
+}

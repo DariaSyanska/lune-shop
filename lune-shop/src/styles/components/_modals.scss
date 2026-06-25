@@ -1,0 +1,539 @@
+@use "../utilities/mixins" as *;
+
+/* ─── Overlay (Background Dimming) ─── */
+.product-modal-overlay,
+.modal-overlay,
+.size-guide-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 15, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2000;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease;
+  pointer-events: none;
+  @include flex-center;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+
+/* ─── Modal containers ─── */
+.product-modal {
+  background: var(--bg-body);
+  width: 96%;
+  max-width: 960px;
+  max-height: 88vh;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+
+  @include from(tablet) {
+    flex-direction: row;
+    max-height: 80vh;
+  }
+}
+
+.product-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+
+  @include from(tablet) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.product-gallery {
+  background: var(--bg-card);
+  width: 100%;
+  min-height: 320px;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+
+  @include from(tablet) {
+    min-height: 500px;
+    height: 100%;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
+.product-details {
+  padding: 40px 32px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+
+  @include from(tablet) {
+    padding: 48px 40px;
+  }
+}
+
+.product-care {
+  border-top: 1px solid var(--color-border);
+  margin-top: 24px;
+  padding-top: 8px;
+
+  .care-trigger {
+    width: 100%;
+    padding: 16px 0;
+    display: flex;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    color: var(--color-text);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    opacity: 0.7;
+    font-family: var(--font-sans);
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    span {
+      font-size: 14px;
+      font-weight: 300;
+    }
+  }
+
+  .care-content {
+    font-size: 12px;
+    color: var(--color-muted);
+    line-height: 1.6;
+    padding-bottom: 12px;
+    padding-right: 20px;
+    transition: opacity 0.3s ease;
+  }
+}
+
+/* ─── Typography & Elements inside Modal ─── */
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  background: var(--bg-body);
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  color: var(--color-text);
+  cursor: pointer;
+  opacity: 0.7;
+  transition:
+    opacity 0.2s,
+    transform 0.3s ease,
+    border-color 0.2s;
+  @include flex-center;
+
+  &:hover {
+    opacity: 1;
+    transform: rotate(90deg);
+    border-color: var(--color-text);
+  }
+}
+
+.product-h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: 400;
+  margin: 0 0 12px;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: var(--color-text);
+}
+
+.product-price-large {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--color-muted);
+  margin: 0 0 28px;
+  letter-spacing: 0.02em;
+}
+
+.size-guide-modal {
+  background: var(--bg-body);
+  max-width: 600px;
+  width: 90%;
+  padding: 40px;
+  border-radius: 0;
+  border: 1px solid var(--color-border);
+}
+
+.modal-close,
+#size-guide-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  margin: 0;
+  background: var(--bg-body);
+  border: none;
+  font-size: 24px;
+  font-weight: 300;
+  color: var(--color-text);
+  cursor: pointer;
+  z-index: 100;
+  padding: 8px;
+  border-radius: 50%;
+  line-height: 1;
+  opacity: 0.6;
+  transition:
+    transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 0.2s,
+    color 0.2s;
+
+  @include flex-center;
+
+  @include from(tablet) {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    margin: 0;
+    background: none;
+  }
+
+  &:hover {
+    opacity: 1;
+    transform: rotate(90deg);
+    color: var(--color-accent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+/* ─── Typography Size Guide ─── */
+.sg-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin: 0 0 8px;
+  clear: both;
+}
+
+.sg-title {
+  font-size: clamp(20px, 4vw, 22px);
+  font-weight: 500;
+  color: var(--color-text);
+  margin: 0 0 28px;
+}
+
+/* ─── Mobile-responsive table ─── */
+.sg-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 8px;
+}
+
+.sg-table {
+  width: 100%;
+  min-width: 400px;
+  border-collapse: collapse;
+
+  thead tr {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  th {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    text-align: left;
+    padding: 0 0 14px;
+
+    &:not(:first-child) {
+      text-align: center;
+    }
+  }
+
+  tbody tr {
+    border-bottom: 1px solid var(--color-border);
+    transition: background 0.15s ease;
+
+    &:last-child {
+      border-bottom: none;
+    }
+    &:hover {
+      background: var(--bg-card);
+    }
+  }
+
+  td {
+    padding: 15px 0;
+    font-size: 13px;
+    color: var(--color-text);
+    vertical-align: middle;
+
+    &:not(:first-child) {
+      text-align: center;
+      color: var(--color-muted);
+      font-size: 12px;
+    }
+  }
+}
+
+.sg-size-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 28px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.sg-note {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border);
+  font-size: 12px;
+  color: var(--color-muted);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.6;
+}
+
+/* ─── Newsletter Popup ─── */
+.newsletter-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+
+  &.active {
+    display: flex;
+    opacity: 1;
+  }
+}
+
+.newsletter-content {
+  background: var(--bg-body);
+  max-width: 800px;
+  width: 90%;
+  display: flex;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+
+  .newsletter-image {
+    flex: 1;
+    display: block;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  .newsletter-text {
+    flex: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @include respond-to("tablet-md") {
+      padding: 40px;
+    }
+
+    h2 {
+      font-family: var(--font-serif);
+      font-size: 32px;
+      margin: 16px 0;
+    }
+
+    .subtitle {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+    }
+  }
+}
+
+input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text);
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease;
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  &::placeholder {
+    color: var(--color-muted);
+    transition: color 0.3s ease;
+  }
+  &:focus::placeholder {
+    color: var(--color-accent);
+    opacity: 0.7;
+  }
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 8px;
+  margin: 24px 0;
+
+  input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text);
+    caret-color: var(--color-accent);
+    transition:
+      border-color 0.3s ease,
+      color 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: var(--color-accent);
+      color: var(--color-accent);
+    }
+  }
+  .newsletter-btn {
+    padding: 12px 24px;
+    background: var(--color-text);
+    color: var(--bg-body);
+    border: 1px solid var(--color-text);
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: var(--color-accent);
+      border-color: var(--color-accent);
+      color: white;
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+.newsletter-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: var(--color-text);
+  z-index: 10;
+  transition:
+    transform 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    color 0.3s ease;
+
+  &:hover {
+    color: var(--color-accent);
+    transform: rotate(90deg);
+  }
+}
+
+/* ─── Premium Country Modal Styles ──────────────────────────── */
+.country-modal {
+  background: var(--bg-body);
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  width: 90%;
+  max-width: 400px;
+  padding: 0;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.country-modal-header {
+  padding: 32px 32px 16px;
+  border: none;
+  .country-modal-title {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    letter-spacing: 0.02em;
+  }
+}
+
+.country-modal-search {
+  padding: 0 32px 24px;
+  border: none;
+  input {
+    height: 48px;
+    padding: 0 16px 0 40px;
+    border-radius: 0;
+    border: 1px solid var(--color-border);
+    &:focus {
+      border-color: var(--color-text);
+    }
+  }
+}
+
+.country-option-label {
+  padding: 16px 32px;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+  }
+}
+
+/* ─── Sticky Add to Cart Button in Modal ─── */
+#modal-add-btn {
+  position: sticky;
+  bottom: 0;
+  margin-top: 32px;
+  z-index: 30;
+  box-shadow:
+    0 20px 0 20px var(--bg-body),
+    0 -20px 30px 10px var(--bg-body);
+}

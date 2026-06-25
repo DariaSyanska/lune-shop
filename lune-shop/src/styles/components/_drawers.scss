@@ -1,0 +1,361 @@
+@use "../utilities/mixins" as *;
+
+/* ─── Overlay (Background Dimming) ─── */
+.cart-overlay,
+.wishlist-overlay,
+#wishlist-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 15, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.4s ease,
+    visibility 0.4s ease;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+
+/* ─── The curtain itself ─── */
+.cart-drawer,
+.wishlist-drawer,
+#wishlist-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 420px;
+  height: 100vh;
+  height: 100dvh;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+
+  background: color-mix(in srgb, var(--bg-body) 45%, rgba(30, 10, 60, 0.6));
+  border-left: 1px solid
+    color-mix(in srgb, var(--color-accent) 25%, transparent);
+  box-shadow:
+    -8px 0 40px rgba(0, 0, 0, 0.4),
+    -2px 0 20px rgba(var(--color-accent-rgb), 0.15);
+
+  &.active {
+    transform: translateX(0);
+  }
+}
+
+.cart-drawer .checkout-btn {
+  width: 100%;
+  display: block;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  position: relative;
+  overflow: visible;
+  border-radius: 999px;
+
+  border: 1px solid color-mix(in srgb, var(--color-accent) 55%, transparent);
+  background: color-mix(in srgb, var(--color-accent) 20%, transparent);
+  box-shadow:
+    0 4px 16px color-mix(in srgb, var(--color-accent) 25%, transparent),
+    0 8px 32px color-mix(in srgb, var(--color-accent) 15%, transparent),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in srgb, var(--color-accent) 80%, transparent);
+    background: color-mix(in srgb, var(--color-accent) 30%, transparent);
+    box-shadow:
+      0 0 18px color-mix(in srgb, var(--color-accent) 45%, transparent),
+      0 6px 24px color-mix(in srgb, var(--color-accent) 40%, transparent),
+      0 12px 48px color-mix(in srgb, var(--color-accent) 25%, transparent),
+      inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow:
+      0 2px 8px color-mix(in srgb, var(--color-accent) 30%, transparent),
+      inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+}
+
+.cart-header {
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border);
+
+  @include respond-to("tablet-sm") {
+    padding: 32px;
+  }
+
+  h2,
+  h3 {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    margin: 0;
+    font-size: clamp(22px, 4vw, 28px);
+  }
+}
+
+.cart-close-btn {
+  background: none;
+  border: none;
+  color: var(--color-text);
+  cursor: pointer;
+  padding: 12px;
+  margin-right: -12px;
+  font-size: 32px;
+  line-height: 1;
+  opacity: 0.6;
+  transition:
+    opacity 0.3s ease,
+    color 0.3s ease;
+
+  @include flex-center;
+
+  svg {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  }
+
+  &:hover {
+    color: var(--color-accent);
+    opacity: 1;
+
+    svg {
+      transform: rotate(90deg);
+    }
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -2px;
+    border-radius: 4px;
+  }
+}
+
+/* ─── Content part ─── */
+.cart-body,
+.wishlist-body {
+  padding: 24px;
+  flex-grow: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+
+  @include respond-to("tablet-sm") {
+    padding: 32px;
+  }
+
+  &.cart-body {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .empty-cart-msg {
+    text-align: center;
+    color: var(--color-muted);
+    padding: 60px 0;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    letter-spacing: 0.05em;
+  }
+}
+
+/* ─── Product card in the shopping cart ─── */
+.cart-item {
+  display: flex;
+  gap: 16px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--color-border);
+  align-items: center;
+
+  &-img {
+    width: 80px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 4px;
+    background: var(--bg-card);
+    flex-shrink: 0;
+
+    @include respond-to("tablet-sm") {
+      width: 90px;
+      height: 120px;
+    }
+  }
+
+  &-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &-title {
+    font-size: 14px;
+    margin: 0;
+    color: var(--color-text);
+  }
+
+  &-variant {
+    font-size: 12px;
+    color: var(--color-muted);
+    margin: 0;
+    text-transform: capitalize;
+  }
+
+  &-price {
+    font-size: 14px;
+    color: var(--color-sand);
+    font-weight: 500;
+    margin: 0;
+  }
+}
+
+/* ─── Quantity controller ─── */
+.qty-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 4px 12px;
+
+  .qty-btn {
+    background: none;
+    border: none;
+    color: var(--color-text);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 4px;
+    transition:
+      color 0.2s ease,
+      transform 0.1s ease;
+
+    &:hover {
+      color: var(--color-accent);
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+}
+
+/* ─── Delete button ─── */
+.cart-item-remove,
+.wishlist-item-remove {
+  background: none;
+  border: none;
+  color: var(--color-muted);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+  padding: 4px 0;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--color-text);
+  }
+}
+
+/* ─── Basket basement ─── */
+.cart-footer {
+  padding: 24px;
+  border-top: 1px solid var(--color-border);
+  background: transparent;
+  flex-shrink: 0;
+
+  @include respond-to("tablet-sm") {
+    padding: 32px;
+  }
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: var(--color-text);
+}
+
+.cart-tax-note {
+  font-size: 12px;
+  color: var(--color-muted);
+  margin: 0 0 24px;
+  text-align: center;
+}
+
+/* ==========================================================================
+   Misplaced Drawer Styles 
+   ========================================================================== */
+
+.empty-drawer-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 60px 24px;
+  text-align: center;
+
+  svg {
+    opacity: 0.25;
+    color: var(--color-text);
+  }
+
+  p {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  span {
+    font-size: 13px;
+    color: var(--color-muted);
+    margin: 0;
+  }
+}
+
+.empty-drawer-cta {
+  margin-top: 12px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  padding: 12px 28px;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  outline: none;
+
+  &:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 4px;
+  }
+
+  &:hover {
+    background: var(--color-text);
+    color: var(--bg-body);
+    border-color: var(--color-text);
+  }
+}

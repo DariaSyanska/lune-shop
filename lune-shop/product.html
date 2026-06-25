@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Silk Slip Dress | Lune Store</title>
+
+    <script>
+      (function () {
+        try {
+          var currentTheme = localStorage.getItem("lune-theme") || "dark";
+          document.documentElement.setAttribute("data-theme", currentTheme);
+        } catch (e) {}
+      })();
+    </script>
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="/images/favicon-dark.png"
+      id="favicon"
+    />
+    <link rel="stylesheet" href="/src/styles/main.scss" />
+    <style>
+      html {
+        background-color: var(--bg-body, #101014);
+      }
+    </style>
+  </head>
+  <body>
+    <header id="header" class="scrolled">
+      <div class="header-container">
+        <a href="index.html" class="header-logo">
+          <img
+            src="/images/nav-bar-dark.png"
+            alt="Lune"
+            class="logo-img logo-dark"
+            loading="lazy"
+          />
+          <img
+            src="/images/nav-bar.png"
+            alt="Lune"
+            class="logo-img logo-light"
+            loading="lazy"
+          />
+        </a>
+
+        <nav class="header-nav" id="mobile-nav">
+          <div class="nav-header">
+            <button
+              class="burger-btn active"
+              id="burger-close"
+              aria-label="Close menu"
+            >
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+
+          <ul class="nav-list">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li class="separator">/</li>
+            <li><a href="catalog.html" class="nav-link">Shop</a></li>
+            <li class="separator">/</li>
+            <li><span class="current-page">Silk Slip Dress</span></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button class="icon-btn" aria-label="Search" id="search-open">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.2"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+
+          <a href="login.html" class="icon-btn" aria-label="Account">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </a>
+
+          <button
+            class="icon-btn"
+            id="wishlist-open"
+            aria-label="Wishlist"
+            style="position: relative"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path
+                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+              ></path>
+            </svg>
+            <span class="wishlist-count" style="display: none">0</span>
+          </button>
+
+          <button
+            class="icon-btn"
+            aria-label="Cart"
+            id="cart-open"
+            style="position: relative"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.2"
+            >
+              <path
+                d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"
+              ></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span class="cart-count" style="display: none">0</span>
+          </button>
+
+          <button
+            class="burger-btn"
+            id="burger-btn"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme">
+            <svg
+              class="sun-icon"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.2"
+            >
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-offset container">
+      <section class="product-detailed-layout product-section" data-id="1">
+        <div class="product-gallery">
+          <div class="gallery-main-wrapper">
+            <img
+              src="/images/silk-dress.jpg"
+              alt="Silk Slip Dress"
+              class="p-gallery-img"
+              id="product-main-img"
+            />
+          </div>
+          <div class="gallery-thumbnails">
+            <button class="thumb-btn active" data-src="/images/silk-dress.jpg">
+              <img src="/images/silk-dress.jpg" alt="Front View" />
+            </button>
+            <button class="thumb-btn" data-src="/images/silk-dress-back.jpg">
+              <img src="/images/silk-dress-back.jpg" alt="Back View" />
+            </button>
+            <button class="thumb-btn" data-src="/images/silk-dress-detail.jpg">
+              <img src="/images/silk-dress-detail.jpg" alt="Texture Detail" />
+            </button>
+          </div>
+        </div>
+
+        <div class="product-sticky-info">
+          <span class="subtitle">Iconic Piece</span>
+          <h1 class="product-h1">Silk Slip Dress</h1>
+          <p class="product-price-large">€ 189.00</p>
+
+          <div class="product-option-group">
+            <span class="option-label"
+              >Color: <strong id="selected-color-name">Ivory</strong></span
+            >
+            <div class="color-options">
+              <button
+                class="color-dot-btn active"
+                style="background-color: #f5f2ea"
+                aria-label="Ivory"
+                data-variant="Ivory"
+              ></button>
+              <button
+                class="color-dot-btn"
+                style="background-color: #1a1a1a"
+                aria-label="Midnight Black"
+                data-variant="Midnight Black"
+              ></button>
+              <button
+                class="color-dot-btn"
+                style="background-color: #7060d8"
+                aria-label="Violet"
+                data-variant="Violet"
+              ></button>
+              <button
+                class="color-dot-btn"
+                style="background-color: #ffb2d0"
+                aria-label="Pink"
+                data-variant="Pink"
+              ></button>
+              <button
+                class="color-dot-btn"
+                style="background-color: #87cefa"
+                aria-label="Blue"
+                data-variant="Blue"
+              ></button>
+              <button
+                class="color-dot-btn"
+                style="background-color: #fffdd0"
+                aria-label="Yellow"
+                data-variant="Yellow"
+              ></button>
+              <button
+                class="color-dot-btn"
+                style="background-color: #008080"
+                aria-label="Teal"
+                data-variant="Teal"
+              ></button>
+            </div>
+          </div>
+
+          <div class="product-option-group">
+            <div class="option-label-row">
+              <span>Size</span>
+              <button class="size-guide-trigger" id="open-size-guide">
+                Size Guide
+              </button>
+            </div>
+            <div class="size-options-grid">
+              <button class="size-select-btn">XS</button>
+              <button class="size-select-btn active">S</button>
+              <button class="size-select-btn">M</button>
+              <button class="size-select-btn">L</button>
+            </div>
+          </div>
+
+          <div class="product-actions-row">
+            <button class="btn-primary" id="add-to-cart">
+              <span>Add to Bag</span>
+            </button>
+          </div>
+
+          <div class="product-desc-accordion">
+            <p class="desc-text">
+              Crafted from 100% pure mulberry silk, this slip dress falls
+              elegantly against the body. Featuring a delicate V-neckline and
+              adjustable spaghetti straps, it's a versatile wardrobe staple for
+              evening wear or layered day looks.
+            </p>
+            <ul
+              class="desc-list"
+              style="
+                margin-top: 20px;
+                padding-left: 18px;
+                line-height: 1.8;
+                color: var(--color-muted);
+              "
+            >
+              <li>100% Mulberry Silk</li>
+              <li>Adjustable straps</li>
+              <li>Dry clean only</li>
+              <li>Model is 175cm and wears size S</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-drawer" id="cart-drawer">
+      <div class="cart-header">
+        <h3>Your Bag</h3>
+        <button class="cart-close-btn" id="cart-close">&times;</button>
+      </div>
+      <div class="cart-body"></div>
+      <div class="cart-footer">
+        <div class="cart-total"><span>Subtotal</span><span>€ 0.00</span></div>
+        <p class="cart-tax-note">Taxes and shipping calculated at checkout</p>
+        <a href="checkout.html" class="btn-primary checkout-btn"
+          >Go to Checkout</a
+        >
+      </div>
+    </div>
+
+    <div class="search-overlay" id="search-overlay">
+      <button class="search-close" id="search-close">&times;</button>
+      <div class="search-container">
+        <div class="search-box">
+          <input
+            type="text"
+            placeholder="Search our collection..."
+            id="search-input"
+            autocomplete="off"
+          />
+          <div class="search-line"></div>
+        </div>
+        <div class="search-results" id="search-results"></div>
+      </div>
+    </div>
+
+    <div id="wishlist-overlay" class="cart-overlay"></div>
+    <div
+      id="wishlist-drawer"
+      class="cart-drawer"
+      style="transform: translateX(100%); pointer-events: none"
+    >
+      <div class="cart-header">
+        <h2>Wishlist</h2>
+        <button id="wishlist-close" class="cart-close-btn">&times;</button>
+      </div>
+      <div
+        class="cart-body wishlist-body"
+        style="flex: 1; overflow-y: auto; padding: 20px 0"
+      >
+        <p class="empty-cart-msg">Your wishlist is empty.</p>
+      </div>
+    </div>
+
+    <div
+      class="modal-overlay"
+      id="size-guide-modal"
+      style="display: none; opacity: 0"
+    >
+      <div class="size-modal-card">
+        <button class="modal-close-btn" id="close-size-guide">&times;</button>
+        <h3>Size Guide</h3>
+        <table class="size-table">
+          <thead>
+            <tr>
+              <th>Size</th>
+              <th>Bust (cm)</th>
+              <th>Waist (cm)</th>
+              <th>Hips (cm)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>XS</td>
+              <td>80-84</td>
+              <td>62-66</td>
+              <td>86-90</td>
+            </tr>
+            <tr>
+              <td>S</td>
+              <td>84-88</td>
+              <td>66-70</td>
+              <td>90-94</td>
+            </tr>
+            <tr>
+              <td>M</td>
+              <td>88-92</td>
+              <td>70-74</td>
+              <td>94-98</td>
+            </tr>
+            <tr>
+              <td>L</td>
+              <td>92-96</td>
+              <td>74-78</td>
+              <td>98-102</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <footer class="footer container" id="contacts">
+      <div class="footer-content">
+        <p class="footer-copyright">
+          &copy; <span id="year"></span> Lune Store. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

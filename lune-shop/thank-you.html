@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Received | Lune</title>
+
+    <script>
+      (function () {
+        try {
+          var currentTheme = localStorage.getItem("lune-theme") || "dark";
+          document.documentElement.setAttribute("data-theme", currentTheme);
+        } catch (e) {}
+      })();
+    </script>
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="/images/favicon-dark.png"
+      id="favicon"
+    />
+    <link rel="stylesheet" href="/src/styles/main.scss" />
+    <style>
+      html {
+        background-color: var(--bg-body, #101014);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="scrolled">
+      <div class="header-container">
+        <a href="index.html" class="header-logo">
+          <img
+            src="/images/nav-bar-dark.png"
+            alt="Lune"
+            class="logo-img logo-dark"
+            loading="lazy"
+          />
+          <img
+            src="/images/nav-bar.png"
+            alt="Lune"
+            class="logo-img logo-light"
+            loading="lazy"
+          />
+        </a>
+
+        <nav class="header-nav" id="mobile-nav">
+          <div class="nav-header">
+            <button
+              class="burger-btn active"
+              id="burger-close"
+              aria-label="Close menu"
+            >
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+
+          <ul class="nav-list">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="catalog.html" class="nav-link">Shop</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button class="icon-btn" aria-label="Cart" id="cart-open">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+              <line x1="3" y1="6" x2="21" y2="6" />
+              <path d="M16 10a4 4 0 0 1-8 0" />
+            </svg>
+            <span class="cart-count" style="display: none">0</span>
+          </button>
+
+          <a href="login.html" class="icon-btn" aria-label="Account">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </a>
+
+          <button
+            class="burger-btn"
+            id="burger-btn"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <button
+            class="theme-toggle"
+            id="theme-toggle"
+            aria-label="Toggle theme"
+          >
+            <svg
+              class="icon-moon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+            <svg
+              class="icon-sun"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="thank-you-page page-offset">
+      <div class="thank-you-box">
+        <div class="thank-you-icon">✓</div>
+
+        <h1 class="thank-you-title">Order Received</h1>
+
+        <p class="thank-you-text">
+          Thank you for your order. We will contact you shortly to confirm the
+          details and next steps.
+        </p>
+
+        <div class="thank-you-actions">
+          <a href="index.html" class="btn-primary">Back to Shop</a>
+          <a href="contact.html" class="thank-you-link">Contact Us</a>
+        </div>
+
+        <p class="thank-you-meta">
+          A confirmation request has been sent successfully.
+        </p>
+      </div>
+    </main>
+
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-drawer" id="cart-drawer">
+      <div class="cart-header">
+        <h2>Your Cart</h2>
+        <button class="cart-close-btn" id="cart-close" aria-label="Close cart">
+          &times;
+        </button>
+      </div>
+      <div class="cart-body"></div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Subtotal</span>
+          <span>€ 0.00</span>
+        </div>
+        <p class="cart-tax-note">Taxes and shipping calculated at checkout</p>
+        <a href="checkout.html" class="btn-primary checkout-btn"
+          >Go to Checkout</a
+        >
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

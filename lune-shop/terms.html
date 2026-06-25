@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terms of Use | Lune</title>
+
+    <script>
+      (function () {
+        try {
+          var currentTheme = localStorage.getItem("lune-theme") || "dark";
+          document.documentElement.setAttribute("data-theme", currentTheme);
+        } catch (e) {}
+      })();
+    </script>
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="/images/favicon-dark.png"
+      id="favicon"
+    />
+    <link rel="stylesheet" href="/src/styles/main.scss" />
+    <style>
+      html {
+        background-color: var(--bg-body, #101014);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="scrolled">
+      <div class="header-container">
+        <a href="index.html" class="header-logo">
+          <img
+            src="/images/nav-bar-dark.png"
+            alt="Lune"
+            class="logo-img logo-dark"
+            loading="lazy"
+          />
+          <img
+            src="/images/nav-bar.png"
+            alt="Lune"
+            class="logo-img logo-light"
+            loading="lazy"
+          />
+        </a>
+
+        <nav class="header-nav" id="mobile-nav">
+          <div class="nav-header">
+            <button
+              class="burger-btn active"
+              id="burger-close"
+              aria-label="Close menu"
+            >
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+
+          <ul class="nav-list">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li class="separator">/</li>
+            <li><span class="current-page">Terms of Use</span></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button
+            class="burger-btn"
+            id="burger-btn"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <a href="login.html" class="icon-btn" aria-label="Account">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </a>
+
+          <button
+            class="theme-toggle"
+            id="theme-toggle"
+            aria-label="Toggle theme"
+          >
+            <svg
+              class="icon-moon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg>
+            <svg
+              class="icon-sun"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="legal-section">
+        <div class="legal-container">
+          <div class="legal-header">
+            <h1 class="legal-title">Terms of Use</h1>
+            <p class="legal-date">Last updated: June 5, 2026</p>
+          </div>
+
+          <div class="legal-content">
+            <p class="legal-intro">
+              Welcome to Lune. By accessing our website and making purchases,
+              you agree to be bound by the following terms and conditions.
+              Please read them carefully.
+            </p>
+
+            <h2 class="legal-subtitle">1. General Provisions</h2>
+            <p>
+              These terms govern your use of the Lune website and the purchase
+              of products presented in our catalog. The Lune brand reserves the
+              right to update or modify these terms at any time without prior
+              notice.
+            </p>
+
+            <h2 class="legal-subtitle">2. Intellectual Property</h2>
+            <p>
+              All content presented on this site, including but not limited to
+              photographs, text, logos, graphics, and interface design, is the
+              exclusive property of Lune. Copying, reproducing, or using any
+              materials for commercial purposes without explicit written
+              permission is strictly prohibited.
+            </p>
+
+            <h2 class="legal-subtitle">3. Products and Pricing</h2>
+            <p>
+              We strive to display the colors and details of our products as
+              accurately as possible. However, we cannot guarantee that your
+              device's screen will reflect the hues with absolute accuracy. All
+              prices are listed in Euros (€) and are subject to change without
+              prior notice.
+            </p>
+
+            <h2 class="legal-subtitle">4. Order Processing</h2>
+            <p>
+              Lune reserves the right to refuse or cancel any order in the event
+              of stock unavailability, pricing errors, or suspicion of
+              fraudulent activity. If your order is canceled after your payment
+              has been processed, we will issue a full refund to your original
+              payment method.
+            </p>
+
+            <h2 class="legal-subtitle">5. Returns and Exchanges</h2>
+            <p>
+              You have the right to return or exchange unworn, unwashed items
+              with their original tags attached within 14 days of receiving your
+              order. Refunds will be issued to the original payment method once
+              the condition of the returned item has been verified.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="contacts">
+      <div class="footer-container footer-layout">
+        <div class="footer-column footer-contacts">
+          <div class="contact-card">
+            <a class="footer-link" href="mailto:hello@lune-store.com">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.2"
+              >
+                <path
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+              <div class="contact-text">
+                <span class="contact-label">Email</span>
+                <span class="contact-value">hello@lune-store.com</span>
+              </div>
+            </a>
+          </div>
+          <div class="contact-card">
+            <a class="footer-link" href="tel:+33624766107">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.2"
+              >
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                <line
+                  x1="12"
+                  y1="18"
+                  x2="12.01"
+                  y2="18"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <div class="contact-text">
+                <span class="contact-label">Phone</span>
+                <span class="contact-value">+33 624766107</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-column footer-center">
+          <div class="footer_socials">
+            <a
+              href="https://facebook.com/lune_store"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
+              <svg class="footer_socials-icon" width="24" height="24">
+                <use href="/images/icons.svg#icon-facebook"></use>
+              </svg>
+            </a>
+            <a
+              href="https://instagram.com/lune_store"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <svg class="footer_socials-icon" width="24" height="24">
+                <use href="/images/icons.svg#icon-instagram"></use>
+              </svg>
+            </a>
+          </div>
+          <nav class="footer-legal">
+            <a href="terms.html" class="legal-link">Terms of Use</a>
+            <a href="privacy.html" class="legal-link">Privacy Policy</a>
+          </nav>
+        </div>
+
+        <div class="footer-column footer-right">
+          <p class="footer-copyright">
+            All rights reserved. Lune. &copy; <span id="year"></span>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-drawer" id="cart-drawer">
+      <div class="cart-header">
+        <h2>Your Cart</h2>
+        <button class="cart-close-btn" id="cart-close" aria-label="Close cart">
+          &times;
+        </button>
+      </div>
+      <div class="cart-body"></div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Subtotal</span>
+          <span>€ 0.00</span>
+        </div>
+        <p class="cart-tax-note">Taxes and shipping calculated at checkout</p>
+        <a href="checkout.html" class="btn-primary checkout-btn"
+          >Go to Checkout</a
+        >
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

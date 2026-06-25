@@ -1,0 +1,27 @@
+/* ─── WebKit Browsers (Chrome, Safari, Edge) ─── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-body);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 100px;
+  border: 2px solid var(--bg-body);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8b7de3;
+}
+
+/* ─── Firefox ─── */
+@supports (scrollbar-color: auto) {
+  html {
+    scrollbar-color: var(--color-accent) var(--bg-body);
+    scrollbar-width: thin;
+  }
+}

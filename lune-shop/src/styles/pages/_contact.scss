@@ -1,0 +1,201 @@
+@use "../utilities/mixins" as *;
+
+/* ==========================================================================
+   Contact Page Layout
+   ========================================================================== */
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 120px;
+  padding: 80px 48px 120px;
+  align-items: start;
+}
+
+.contact-main-title {
+  font-family: var(--font-serif);
+  font-size: clamp(36px, 5vw, 48px);
+  font-weight: 400;
+  margin: 10px 0 40px 0;
+  color: var(--color-text);
+}
+
+.general-section {
+  margin-bottom: 32px;
+
+  h4 {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  p a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    outline: none;
+    border-radius: 2px;
+
+    &:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 4px;
+    }
+
+    &:hover {
+      color: var(--color-accent);
+    }
+  }
+}
+
+/* ─── Feedback form ─── */
+.contact-form-container {
+  width: 100%;
+  max-width: 500px;
+  justify-self: end;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+
+  .input-group {
+    position: relative;
+    width: 100%;
+    margin-bottom: 24px;
+
+    input,
+    textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--color-border);
+      padding: 12px 0 12px 0;
+      font-family: var(--font-sans);
+      font-size: 14px;
+      color: var(--color-text);
+      outline: none !important;
+      box-shadow: none !important;
+      transition: border-bottom-color 0.3s ease;
+      border-radius: 0;
+
+      &::placeholder {
+        color: transparent;
+      }
+
+      &:focus,
+      &:focus-visible {
+        border-bottom-color: var(--color-accent);
+        outline: none !important;
+      }
+    }
+
+    textarea {
+      height: 120px;
+      resize: none;
+    }
+
+    label {
+      position: absolute;
+      top: 12px;
+      left: 0;
+      font-size: 14px;
+      color: var(--color-muted);
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .input-line {
+      display: none !important;
+    }
+
+    input:focus ~ label,
+    input:not(:placeholder-shown) ~ label,
+    textarea:focus ~ label,
+    textarea:not(:placeholder-shown) ~ label {
+      top: -16px;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-text);
+    }
+
+    input:focus ~ label,
+    textarea:focus ~ label {
+      color: var(--color-accent);
+    }
+  }
+
+  .btn-primary {
+    width: fit-content;
+    padding: 16px 48px;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: var(--color-text);
+    color: var(--bg-body);
+    border: 1px solid var(--color-text);
+    cursor: pointer;
+    transition: all 0.4s ease;
+    margin-top: 16px;
+
+    &:hover {
+      background: transparent;
+      color: var(--color-text);
+    }
+  }
+}
+
+/* ─── Success State ─── */
+.btn-primary.success {
+  background-color: var(--color-success, #2e7d32);
+  color: #ffffff;
+  pointer-events: none;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
+@include respond-to("tablet-md") {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    padding: 40px 24px 60px;
+  }
+
+  .contact-form-container {
+    max-width: 100%;
+    justify-self: start;
+  }
+
+  .contact-form .btn-primary {
+    width: 100%;
+    align-self: stretch;
+  }
+}
+
+@include respond-to("mobile-lg") {
+  .contact-layout {
+    gap: 48px;
+  }
+
+  .contact-form {
+    gap: 32px;
+
+    .input-group textarea {
+      height: 80px;
+    }
+  }
+}

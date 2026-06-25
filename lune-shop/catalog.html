@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Catalog | Lune Store</title>
+
+    <script>
+      (function () {
+        try {
+          var currentTheme = localStorage.getItem("lune-theme") || "dark";
+          document.documentElement.setAttribute("data-theme", currentTheme);
+        } catch (e) {}
+      })();
+    </script>
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="/images/favicon-dark.png"
+      id="favicon"
+    />
+    <link rel="stylesheet" href="/src/styles/main.scss" />
+    <style>
+      html {
+        background-color: var(--bg-body, #101014);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="scrolled">
+      <div class="header-container">
+        <a href="index.html" class="header-logo">
+          <img
+            src="/images/nav-bar-dark.png"
+            alt="Lune"
+            class="logo-img logo-dark"
+            loading="lazy"
+          />
+          <img
+            src="/images/nav-bar.png"
+            alt="Lune"
+            class="logo-img logo-light"
+            loading="lazy"
+          />
+        </a>
+
+        <nav class="header-nav" id="mobile-nav">
+          <div class="nav-header">
+            <button
+              class="burger-btn active"
+              id="burger-close"
+              aria-label="Close menu"
+            >
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+
+          <ul class="nav-list">
+            <li><a href="catalog.html" class="nav-link">New items</a></li>
+            <li><a href="catalog.html#dresses" class="nav-link">Dresses</a></li>
+            <li><a href="catalog.html#skirts" class="nav-link">Skirts</a></li>
+            <li><a href="catalog.html#blouses" class="nav-link">Blouses</a></li>
+            <li><a href="catalog.html#shirts" class="nav-link">Shirts</a></li>
+            <li><a href="catalog.html#tops" class="nav-link">Tops</a></li>
+            <li>
+              <a href="catalog.html#trousers" class="nav-link">Trousers</a>
+            </li>
+            <li>
+              <a href="catalog.html#outerwear" class="nav-link">Outerwear</a>
+            </li>
+            <li>
+              <a href="catalog.html#knitwear" class="nav-link">Knitwear</a>
+            </li>
+            <li>
+              <a href="catalog.html#accessories" class="nav-link"
+                >Accessories</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button class="icon-btn" id="search-open" aria-label="Search">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.2"
+            >
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+
+          <a href="login.html" class="icon-btn" aria-label="Account">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </a>
+
+          <button
+            class="icon-btn"
+            id="wishlist-open"
+            aria-label="Wishlist"
+            style="position: relative"
+          >
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path
+                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+              ></path>
+            </svg>
+            <span class="wishlist-count" style="display: none">0</span>
+          </button>
+          <button
+            class="icon-btn"
+            aria-label="Cart"
+            id="cart-open"
+            style="position: relative"
+          >
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.2"
+            >
+              <path
+                d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"
+              ></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+
+            <span class="cart-count" style="display: none">0</span>
+          </button>
+
+          <button
+            class="burger-btn"
+            id="burger-btn"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme">
+            <svg
+              class="sun-icon"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.2"
+            >
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-offset">
+      <div class="container catalog-page-layout">
+        <aside class="filters-sidebar">
+          <div class="filter-group">
+            <nav class="header-nav filter">
+              <ul class="nav-list">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li class="separator">/</li>
+                <li><span class="current-page">Shop</span></li>
+              </ul>
+            </nav>
+            <h4>Sort by</h4>
+            <div class="select-wrapper">
+              <select id="sort-select" class="filter-select">
+                <option value="newest">Newest</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h4>Category</h4>
+            <div class="filter-options" id="category-filters">
+              <label class="checkbox-label"
+                ><input type="checkbox" value="dresses" /> Dresses</label
+              >
+              <label class="checkbox-label"
+                ><input type="checkbox" value="skirts" /> Skirts</label
+              >
+              <label class="checkbox-label"
+                ><input type="checkbox" value="blouses" /> Blouses</label
+              >
+              <label class="checkbox-label"
+                ><input type="checkbox" value="shirts" /> Shirts</label
+              >
+              <label class="checkbox-label"
+                ><input type="checkbox" value="tops" /> Tops</label
+              >
+              <label class="checkbox-label"
+                ><input type="checkbox" value="trousers" /> Trousers</label
+              >
+              <label class="checkbox-label"
+                ><input type="checkbox" value="outerwear" /> Outerwear</label
+              >
+              <label class="checkbox-label"
+                ><input type="checkbox" value="knitwear" /> Knitwear</label
+              >
+              <label class="checkbox-label"
+                ><input type="checkbox" value="accessories" />
+                Accessories</label
+              >
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h4>Color</h4>
+            <div class="color-filter-grid" id="color-filters">
+              <button
+                class="color-dot"
+                data-color="ivory"
+                style="background: #f5f2ea"
+                title="Ivory"
+              ></button>
+              <button
+                class="color-dot"
+                data-color="black"
+                style="background: #1a1a1a"
+                title="Black"
+              ></button>
+              <button
+                class="color-dot"
+                data-color="violet"
+                style="background: #7060d8"
+                title="Violet"
+              ></button>
+              <button
+                class="color-dot"
+                data-color="pink"
+                style="background-color: #ffb2d0"
+                title="Pink"
+              ></button>
+              <button
+                class="color-dot"
+                data-color="blue"
+                style="background-color: #87cefa"
+                title="Blue"
+              ></button>
+              <button
+                class="color-dot"
+                data-color="yellow"
+                style="background-color: #fffdd0"
+                title="Yellow"
+              ></button>
+              <button
+                class="color-dot"
+                data-color="teal"
+                style="background-color: #008080"
+                title="Teal"
+              ></button>
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h4>Size</h4>
+            <div class="size-filter-grid" id="size-filters">
+              <button class="filter-size-btn">XS</button>
+              <button class="filter-size-btn">S</button>
+              <button class="filter-size-btn">M</button>
+              <button class="filter-size-btn">L</button>
+              <button class="filter-size-btn">XL</button>
+            </div>
+          </div>
+
+          <button id="reset-filters" class="btn-secondary">Reset All</button>
+        </aside>
+
+        <section class="catalog-main">
+          <div class="catalog-grid" id="catalog-grid"></div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer" id="contacts">
+      <div class="footer-container footer-layout">
+        <div class="footer-column footer-contacts">
+          <div class="contact-card">
+            <a class="footer-link" href="mailto:hello@lune-store.com">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.2"
+              >
+                <path
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+              <div class="contact-text">
+                <span class="contact-label">Email</span>
+                <span class="contact-value">hello@lune-store.com</span>
+              </div>
+            </a>
+          </div>
+          <div class="contact-card">
+            <a class="footer-link" href="tel:+33624766107">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.2"
+              >
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                <line
+                  x1="12"
+                  y1="18"
+                  x2="12.01"
+                  y2="18"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <div class="contact-text">
+                <span class="contact-label">Phone</span>
+                <span class="contact-value">+33 624766107</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-column footer-center">
+          <div class="footer_socials">
+            <a
+              href="https://facebook.com/lune_store"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
+              <svg class="footer_socials-icon" width="30" height="30">
+                <use href="./images/icons.svg#icon-facebook"></use>
+              </svg>
+            </a>
+            <a
+              href="https://instagram.com/lune_store"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <svg class="footer_socials-icon" width="30" height="30">
+                <use href="./images/icons.svg#icon-instagram"></use>
+              </svg>
+            </a>
+          </div>
+          <nav class="footer-legal">
+            <a href="terms.html" class="legal-link">Terms of Use</a>
+            <a href="privacy.html" class="legal-link">Privacy Policy</a>
+          </nav>
+        </div>
+
+        <div class="footer-column footer-right">
+          <p class="footer-copyright">
+            All rights reserved. Lune. &copy; <span id="year"></span>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-drawer" id="cart-drawer">
+      <div class="cart-header">
+        <h3>Your Cart</h3>
+        <button class="cart-close-btn" id="cart-close" aria-label="Close cart">
+          &times;
+        </button>
+      </div>
+      <div class="cart-body"></div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Subtotal</span>
+          <span>€ 0.00</span>
+        </div>
+        <p class="cart-tax-note">Taxes and shipping calculated at checkout</p>
+        <a href="checkout.html" class="btn-primary checkout-btn"
+          >Go to Checkout</a
+        >
+      </div>
+    </div>
+
+    <div class="product-modal-overlay modal-overlay" id="product-modal-overlay">
+      <div class="product-modal">
+        <button class="modal-close" id="product-modal-close">&times;</button>
+        <div class="product-layout">
+          <div class="product-gallery">
+            <img src="" alt="" class="product-gallery-main" id="modal-img" />
+          </div>
+          <div class="product-details">
+            <h1 class="product-h1" id="modal-title"></h1>
+            <p class="product-price-large" id="modal-price"></p>
+
+            <div class="product-color">
+              <span class="option-label"
+                >Color: <span id="modal-color-name">Selected Color</span></span
+              >
+              <div class="color-options"></div>
+            </div>
+
+            <div class="product-size" style="margin: 20px 0">
+              <div class="size-header">
+                <span class="option-label" style="margin-bottom: 0">Size</span>
+                <button
+                  type="button"
+                  class="size-guide-btn"
+                  id="size-guide-open"
+                >
+                  Size Guide
+                </button>
+              </div>
+              <div class="size-options"></div>
+            </div>
+
+            <div class="product-care">
+              <button class="care-trigger" type="button">
+                Composition & Care <span>+</span>
+              </button>
+              <div
+                class="care-content"
+                id="modal-composition"
+                style="display: none"
+              ></div>
+            </div>
+
+            <button class="btn-primary" id="modal-add-btn">Add to Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-overlay" id="search-overlay">
+      <button class="search-close" id="search-close" aria-label="Close search">
+        &times;
+      </button>
+      <div class="search-container">
+        <div class="search-box">
+          <input
+            type="text"
+            placeholder="Search our collection..."
+            id="search-input"
+            autocomplete="off"
+          />
+          <div class="search-line"></div>
+        </div>
+        <div class="search-results" id="search-results"></div>
+      </div>
+    </div>
+
+    <div id="wishlist-overlay" class="cart-overlay"></div>
+    <div
+      id="wishlist-drawer"
+      class="cart-drawer"
+      style="transform: translateX(100%); pointer-events: none"
+    >
+      <div class="cart-header">
+        <h2>Wishlist</h2>
+        <button
+          id="wishlist-close"
+          class="cart-close-btn"
+          aria-label="Close wishlist"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div
+        class="cart-body wishlist-body"
+        style="flex: 1; overflow-y: auto; padding: 20px 0"
+      >
+        <p class="empty-cart-msg">Your wishlist is empty.</p>
+      </div>
+    </div>
+
+    <!-- Size Guide -->
+    <div class="size-guide-overlay" id="size-guide-overlay">
+      <div class="size-guide-modal">
+        <button id="size-guide-close" class="modal-close" aria-label="Close">
+          <i class="ti ti-x"></i>
+        </button>
+        <p class="sg-eyebrow">Measurements</p>
+        <h2 class="sg-title">Size guide</h2>
+        <table class="sg-table">
+          <thead>
+            <tr>
+              <th>Size</th>
+              <th>Bust (cm)</th>
+              <th>Waist (cm)</th>
+              <th>Hips (cm)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="sg-size-badge">XS</span></td>
+              <td>80–84</td>
+              <td>62–66</td>
+              <td>86–90</td>
+            </tr>
+            <tr>
+              <td><span class="sg-size-badge">S</span></td>
+              <td>84–88</td>
+              <td>66–70</td>
+              <td>90–94</td>
+            </tr>
+            <tr>
+              <td><span class="sg-size-badge">M</span></td>
+              <td>88–92</td>
+              <td>70–74</td>
+              <td>94–98</td>
+            </tr>
+            <tr>
+              <td><span class="sg-size-badge">L</span></td>
+              <td>92–96</td>
+              <td>74–78</td>
+              <td>98–102</td>
+            </tr>
+            <tr>
+              <td><span class="sg-size-badge">XL</span></td>
+              <td>96–100</td>
+              <td>78–82</td>
+              <td>102–106</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="sg-note">
+          <i class="ti ti-info-circle"></i>
+          All measurements are body measurements in centimetres. If you are
+          between sizes, we recommend sizing up.
+        </p>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

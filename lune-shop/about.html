@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="The story behind Lune — slow fashion, ethical production, and the finest natural fabrics."
+    />
+    <title>Our Story | Lune Store</title>
+
+    <script>
+      (function () {
+        try {
+          var currentTheme = localStorage.getItem("lune-theme") || "dark";
+          document.documentElement.setAttribute("data-theme", currentTheme);
+        } catch (e) {}
+      })();
+    </script>
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="/images/favicon-dark.png"
+      id="favicon"
+    />
+    <link rel="stylesheet" href="/src/styles/main.scss" />
+    <style>
+      html {
+        background-color: var(--bg-body, #101014);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="header" class="scrolled">
+      <div class="header-container">
+        <a href="index.html" class="header-logo">
+          <img
+            src="/images/nav-bar-dark.png"
+            alt="Lune"
+            class="logo-img logo-dark"
+            loading="lazy"
+          />
+          <img
+            src="/images/nav-bar.png"
+            alt="Lune"
+            class="logo-img logo-light"
+            loading="lazy"
+          />
+        </a>
+
+        <nav class="header-nav" id="mobile-nav">
+          <div class="nav-header">
+            <button
+              class="burger-btn active"
+              id="burger-close"
+              aria-label="Close menu"
+            >
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+
+          <ul class="nav-list">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li class="separator">/</li>
+            <li><a href="catalog.html" class="nav-link">Shop</a></li>
+            <li class="separator">/</li>
+            <li><span class="current-page">Our Story</span></li>
+            <li class="mobile-only-link" style="display: none">
+              <a href="about.html" class="nav-link">Our Story</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <button
+            class="burger-btn"
+            id="burger-btn"
+            aria-label="Toggle menu"
+            aria-expanded="false"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <a href="login.html" class="icon-btn" aria-label="Account">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </a>
+
+          <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme">
+            <svg
+              class="sun-icon"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.2"
+            >
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-offset about-main">
+      <!-- About Section -->
+      <section class="about-hero">
+        <div class="about-hero-bg" aria-hidden="true"></div>
+        <div class="about-hero-overlay" aria-hidden="true"></div>
+        <div class="about-hero-text">
+          <span class="subtitle">Our Story</span>
+          <h1>
+            Born under the moonlight,<br />
+            designed for the sun.
+          </h1>
+          <p>
+            Founded in 2024, Lune was created for the modern woman who seeks
+            <span class="highlighted-text">elegance</span> without compromise.
+            We believe that true luxury lies in simplicity and the tactile
+            sensation of the finest
+            <span class="highlighted-text">natural fabrics</span>.
+          </p>
+        </div>
+      </section>
+
+      <!-- Philosophy Section -->
+      <section
+        class="philosophy container"
+        aria-labelledby="philosophy-heading"
+      >
+        <h2 id="philosophy-heading">Our Philosophy</h2>
+        <div class="philosophy-grid">
+          <div class="phil-item reveal-on-scroll">
+            <h3>Slow Fashion</h3>
+            <p>
+              We don't follow trends. We create timeless pieces designed to last
+              a lifetime, reducing waste and promoting conscious consumption.
+            </p>
+          </div>
+          <div class="phil-item reveal-on-scroll">
+            <h3>Ethical Production</h3>
+            <p>
+              Every stitch is made in small, family-owned ateliers where
+              craftsmanship and fair labor are the highest priorities.
+            </p>
+          </div>
+          <div class="phil-item reveal-on-scroll">
+            <h3>Minimalism</h3>
+            <p>
+              Clean lines, neutral palettes, and effortless silhouettes. We
+              strip away the noise to let your inner light shine.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quote Section -->
+      <section class="quote-section reveal-on-scroll" aria-label="Brand quote">
+        <div class="container">
+          <blockquote class="quote-title">
+            Lune is not just clothing; it is a moonlit state of mind.
+            <cite class="quote-author">— THE LUNE MANIFESTO</cite>
+          </blockquote>
+        </div>
+      </section>
+
+      <!-- Traceability Section -->
+      <section class="traceability container" aria-labelledby="trace-heading">
+        <div class="section-header reveal-on-scroll">
+          <span class="subtitle">Ethical Journey</span>
+          <h2 class="section-title" id="trace-heading">A Transparent Path</h2>
+        </div>
+        <div class="trace-grid">
+          <div
+            class="trace-item reveal-on-scroll"
+            style="transition-delay: 0.15s"
+          >
+            <img class="trace-icon" src="/images/thread.svg" alt="Thread" />
+            <div class="trace-number" aria-hidden="true">01 Sourcing</div>
+            <div class="trace-info">
+              <p>
+                We partner with Oeko-Tex® certified silk farms that honor the
+                silkworm's lifecycle and soil health.
+              </p>
+            </div>
+          </div>
+          <div
+            class="trace-item reveal-on-scroll"
+            style="transition-delay: 0.15s"
+          >
+            <img class="trace-icon" src="/images/needle.svg" alt="Needle" />
+            <div class="trace-number" aria-hidden="true">02 Crafting</div>
+            <div class="trace-info">
+              <p>
+                Small-batch production in family-owned ateliers prevents waste
+                and ensures artisanal quality.
+              </p>
+            </div>
+          </div>
+          <div
+            class="trace-item reveal-on-scroll"
+            style="transition-delay: 0.15s"
+          >
+            <img class="trace-icon" src="/images/dove.svg" alt="Dove" />
+            <div class="trace-number" aria-hidden="true">03 Delivery</div>
+            <div class="trace-info">
+              <p>
+                Every Lune piece is shipped in 100% plastic-free, compostable
+                packaging.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Materials Section -->
+      <section class="materials-section" aria-labelledby="materials-heading">
+        <div class="background-wrapper">
+          <div class="crescent-glow"></div>
+        </div>
+        <div class="container">
+          <h2 class="section-title reveal-on-scroll" id="materials-heading">
+            The Essence of Touch
+          </h2>
+          <div class="materials-layout">
+            <div class="material-card reveal-on-scroll">
+              <div class="card-content">
+                <div class="card-header">
+                  <img
+                    class="lune-phase"
+                    src="/images/moon.svg"
+                    alt="Moon phase"
+                    loading="lazy"
+                  />
+                  <span class="mat-num" aria-hidden="true">01</span>
+                </div>
+                <h4>OEKO-TEX® Certified Silk</h4>
+                <p>
+                  Breathable, hypoallergenic, and incredibly soft. Our silk is
+                  sourced from ethical farms that prioritize the lifecycle of
+                  the silkworm.
+                </p>
+              </div>
+              <div class="card-image-wrapper">
+                <img
+                  src="/images/silk-material.jpg"
+                  alt="Silk material"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+
+            <div class="material-card reveal-on-scroll">
+              <div class="card-content">
+                <div class="card-header">
+                  <img
+                    class="lune-phase"
+                    src="/images/moon-1.svg"
+                    alt="Moon phase"
+                    loading="lazy"
+                  />
+                  <span class="mat-num" aria-hidden="true">02</span>
+                </div>
+                <h4>European Flax™ Certified</h4>
+                <p>
+                  The oldest fiber in the world. Durable and cooling, our linen
+                  becomes softer and more beautiful with every single wash.
+                </p>
+              </div>
+              <div class="card-image-wrapper">
+                <img
+                  src="/images/cashmere-material.jpg"
+                  alt="Cashmere material"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+
+            <div class="material-card reveal-on-scroll">
+              <div class="card-content">
+                <div class="card-header">
+                  <img
+                    class="lune-phase"
+                    src="/images/moon-2.svg"
+                    alt="Moon phase"
+                    loading="lazy"
+                  />
+                  <span class="mat-num" aria-hidden="true">03</span>
+                </div>
+                <h4>Recycled GRS Cashmere</h4>
+                <p>
+                  Warmth without weight. We use recycled and sustainably sourced
+                  cashmere fibers to protect the mountain ecosystems.
+                </p>
+              </div>
+              <div class="card-image-wrapper">
+                <img
+                  src="/images/flax-material.jpg"
+                  alt="Flax material"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- CTA Section -->
+    <section
+      class="about-footer-cta container reveal-on-scroll"
+      aria-labelledby="cta-heading"
+    >
+      <div class="cta-content">
+        <h2 id="cta-heading">Ready to feel the difference?</h2>
+        <p>
+          Discover our collection of timeless silhouettes and natural fabrics.
+        </p>
+        <div class="cta-buttons">
+          <a href="catalog.html" class="btn-primary">Shop Collection</a>
+          <a href="index.html" class="link-underlined">Back to Home</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer" id="contacts">
+      <div class="footer-container footer-layout">
+        <div class="footer-column footer-contacts">
+          <div class="contact-card">
+            <a class="footer-link" href="mailto:hello@lune-store.com">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.2"
+              >
+                <path
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+              <div class="contact-text">
+                <span class="contact-label">Email</span>
+                <span class="contact-value">hello@lune-store.com</span>
+              </div>
+            </a>
+          </div>
+          <div class="contact-card">
+            <a class="footer-link" href="tel:+33624766107">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.2"
+              >
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                <line
+                  x1="12"
+                  y1="18"
+                  x2="12.01"
+                  y2="18"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <div class="contact-text">
+                <span class="contact-label">Phone</span>
+                <span class="contact-value">+33 624766107</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-column footer-center">
+          <div class="footer_socials">
+            <a
+              href="https://facebook.com/lune_store"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+            >
+              <svg class="footer_socials-icon" width="24" height="24">
+                <use href="/images/icons.svg#icon-facebook"></use>
+              </svg>
+            </a>
+            <a
+              href="https://instagram.com/lune_store"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+            >
+              <svg class="footer_socials-icon" width="24" height="24">
+                <use href="/images/icons.svg#icon-instagram"></use>
+              </svg>
+            </a>
+          </div>
+          <nav class="footer-legal">
+            <a href="terms.html" class="legal-link">Terms of Use</a>
+            <a href="privacy.html" class="legal-link">Privacy Policy</a>
+          </nav>
+        </div>
+
+        <div class="footer-column footer-right">
+          <p class="footer-copyright">
+            All rights reserved. Lune. &copy; <span id="year"></span>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!--  -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+    <div class="cart-drawer" id="cart-drawer">
+      <div class="cart-header">
+        <h3>Your Cart</h3>
+        <button class="cart-close-btn" id="cart-close" aria-label="Close cart">
+          &times;
+        </button>
+      </div>
+      <div class="cart-body"></div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          <span>Subtotal</span>
+          <span>€ 0.00</span>
+        </div>
+        <p class="cart-tax-note">Taxes and shipping calculated at checkout</p>
+        <a href="checkout.html" class="btn-primary checkout-btn"
+          >Go to Checkout</a
+        >
+      </div>
+    </div>
+
+    <div class="search-overlay" id="search-overlay">
+      <button class="search-close" id="search-close" aria-label="Close search">
+        &times;
+      </button>
+      <div class="search-container">
+        <div class="search-box">
+          <input
+            type="text"
+            placeholder="Search our collection..."
+            id="search-input"
+            autocomplete="off"
+          />
+          <div class="search-line"></div>
+        </div>
+        <div class="search-results" id="search-results"></div>
+      </div>
+    </div>
+
+    <div id="wishlist-overlay" class="cart-overlay"></div>
+    <div
+      id="wishlist-drawer"
+      class="cart-drawer"
+      style="transform: translateX(100%); pointer-events: none"
+    >
+      <div class="cart-header">
+        <h2>Wishlist</h2>
+        <button
+          id="wishlist-close"
+          class="cart-close-btn"
+          aria-label="Close wishlist"
+        >
+          &times;
+        </button>
+      </div>
+      <div
+        class="cart-body wishlist-body"
+        style="flex: 1; overflow-y: auto; padding: 20px 0"
+      >
+        <p class="empty-cart-msg">Your wishlist is empty.</p>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+    <script type="module" src="/src/main.js"></script>
+    <script type="module" src="/src/about.js"></script>
+  </body>
+</html>

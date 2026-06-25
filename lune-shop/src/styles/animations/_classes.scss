@@ -1,0 +1,39 @@
+@use "../utilities/mixins" as *;
+
+.hero-scroll-bar {
+  animation: scroll-pulse 1.5s ease-in-out infinite;
+}
+
+.hero-moon::after {
+  content: "";
+  position: absolute;
+  inset: -40px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(112, 96, 216, 0.25) 0%,
+    transparent 70%
+  );
+  animation: moon-glow 6s ease-in-out infinite;
+  pointer-events: none;
+
+  @include respond-to("mobile-lg") {
+    inset: -20px;
+  }
+}
+
+.cart-bounce {
+  animation: cart-bounce 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+// ─── 404 Page Animation ───────────────────────────────────────────────
+
+body.error-loaded .error-content-wrapper > * {
+  animation: error-fade-up 0.8s cubic-bezier(0.25, 1, 0.5, 1) both;
+}
+
+@for $i from 1 through 5 {
+  body.error-loaded .error-content-wrapper > *:nth-child(#{$i}) {
+    animation-delay: #{0.1 + ($i - 1) * 0.15}s;
+  }
+}

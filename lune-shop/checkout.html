@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout | Lune Store</title>
+
+    <script>
+      (function () {
+        try {
+          var currentTheme = localStorage.getItem("lune-theme") || "dark";
+          document.documentElement.setAttribute("data-theme", currentTheme);
+        } catch (e) {}
+      })();
+    </script>
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="/images/favicon-dark.png"
+      id="favicon"
+    />
+    <link rel="stylesheet" href="/src/styles/main.scss" />
+    <style>
+      html {
+        background-color: var(--bg-body, #101014);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="scrolled">
+      <div class="header-container">
+        <a href="index.html" class="header-logo">
+          <img
+            src="/images/nav-bar-dark.png"
+            class="logo-img logo-dark"
+            alt="Lune"
+          />
+          <img
+            src="/images/nav-bar.png"
+            class="logo-img logo-light"
+            alt="Lune"
+          />
+        </a>
+        <div class="header-actions">
+          <a href="catalog.html" class="nav-link small-link">Return to Shop</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-offset">
+      <section class="checkout-section container">
+        <form
+          class="checkout-main-layout"
+          id="lune-checkout-form"
+          action="https://api.web3forms.com/submit"
+          method="POST"
+        >
+          <input
+            type="hidden"
+            name="access_key"
+            value="f772b28a-601c-49a6-9eb6-fadd9013642f"
+          />
+          <input type="hidden" name="subject" value="New Order from Lune" />
+          <input type="hidden" name="from_name" value="Lune Checkout" />
+          <input type="hidden" name="botcheck" />
+
+          <input
+            type="hidden"
+            name="order_items"
+            id="form-order-items"
+            value=""
+          />
+          <input
+            type="hidden"
+            name="total_price"
+            id="form-total-price"
+            value=""
+          />
+
+          <div class="checkout-forms">
+            <h1 class="checkout-title" style="margin-bottom: 24px">Checkout</h1>
+
+            <div class="checkout-step-block">
+              <h2 class="checkout-step-title">01. Contact Information</h2>
+              <div class="input-field-wrapper">
+                <input
+                  type="email"
+                  name="email"
+                  id="checkout-email"
+                  required
+                  placeholder=" "
+                  autocomplete="email"
+                />
+                <label for="checkout-email">Email Address</label>
+              </div>
+              <div class="input-field-wrapper">
+                <input
+                  type="tel"
+                  name="phone"
+                  id="checkout-phone"
+                  required
+                  placeholder=" "
+                  autocomplete="tel"
+                />
+                <label for="checkout-phone">Phone Number</label>
+              </div>
+            </div>
+
+            <div
+              class="input-field-wrapper custom-country-trigger"
+              id="open-country-modal"
+            >
+              <input
+                type="text"
+                name="country"
+                id="chk-country"
+                required
+                placeholder=" "
+                readonly
+                style="cursor: pointer"
+              />
+              <label for="chk-country">Country / Region</label>
+
+              <svg
+                class="select-arrow"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </div>
+
+            <div class="checkout-step-block">
+              <h2 class="checkout-step-title">02. Shipping Address</h2>
+              <div class="input-grid-2">
+                <div class="input-field-wrapper">
+                  <input
+                    type="text"
+                    name="first_name"
+                    id="chk-first-name"
+                    required
+                    placeholder=" "
+                  />
+                  <label for="chk-first-name">First Name</label>
+                </div>
+                <div class="input-field-wrapper">
+                  <input
+                    type="text"
+                    name="last_name"
+                    id="chk-last-name"
+                    required
+                    placeholder=" "
+                  />
+                  <label for="chk-last-name">Last Name</label>
+                </div>
+              </div>
+
+              <div class="input-field-wrapper">
+                <input
+                  type="text"
+                  name="address"
+                  id="chk-address"
+                  required
+                  placeholder=" "
+                  autocomplete="street-address"
+                />
+                <label for="chk-address">Address</label>
+              </div>
+
+              <div class="input-grid-2">
+                <div class="input-field-wrapper">
+                  <input
+                    type="text"
+                    name="city"
+                    id="chk-city"
+                    required
+                    placeholder=" "
+                  />
+                  <label for="chk-city">City</label>
+                </div>
+                <div class="input-field-wrapper">
+                  <input
+                    type="text"
+                    name="zip"
+                    id="chk-postal"
+                    required
+                    placeholder=" "
+                    autocomplete="postal-code"
+                  />
+                  <label for="chk-postal">Postal Code</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="checkout-step-block">
+              <h2 class="checkout-step-title">03. Payment Method</h2>
+              <div class="payment-methods-list">
+                <label class="payment-radio-card active">
+                  <input
+                    type="radio"
+                    name="payment-option"
+                    value="card"
+                    checked
+                  />
+                  <span class="radio-custom"></span>
+                  <span class="payment-label-text">Credit / Debit Card</span>
+                </label>
+                <label class="payment-radio-card">
+                  <input type="radio" name="payment-option" value="paypal" />
+                  <span class="radio-custom"></span>
+                  <span class="payment-label-text">PayPal</span>
+                </label>
+              </div>
+
+              <div class="card-details-subform" id="card-inputs-area">
+                <div class="input-field-wrapper">
+                  <input
+                    type="text"
+                    id="card-num"
+                    placeholder=" "
+                    maxlength="19"
+                  />
+                  <label for="card-num">Card Number</label>
+                </div>
+                <div class="input-grid-2">
+                  <div class="input-field-wrapper">
+                    <input
+                      type="text"
+                      id="card-date"
+                      placeholder=" "
+                      maxlength="5"
+                    />
+                    <label for="card-date">Expiry Date (MM/YY)</label>
+                  </div>
+                  <div class="input-field-wrapper">
+                    <input
+                      type="password"
+                      id="card-cvc"
+                      placeholder=" "
+                      maxlength="3"
+                    />
+                    <label for="card-cvc">CVC</label>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                id="paypal-button-area"
+                style="display: none; margin-top: 20px; max-width: 500px"
+              >
+                <div id="paypal-button-container"></div>
+              </div>
+              <p class="checkout-note" style="margin-top: 16px">
+                This is a sandbox integration for portfolio purposes.
+              </p>
+            </div>
+          </div>
+
+          <aside class="checkout-summary-sidebar">
+            <div class="summary-sticky-card">
+              <h3 class="summary-sidebar-title">Order Summary</h3>
+
+              <div
+                class="checkout-items-scrollarea"
+                id="checkout-products-list"
+              ></div>
+
+              <div class="promo-code-row">
+                <div class="input-field-wrapper" style="margin-bottom: 0">
+                  <input type="text" id="promo-input" placeholder=" " />
+                  <label for="promo-input">Gift card or promo code</label>
+                </div>
+                <button
+                  type="button"
+                  class="promo-apply-btn"
+                  id="apply-promo-trigger"
+                >
+                  Apply
+                </button>
+              </div>
+
+              <div class="summary-totals-table">
+                <div class="totals-row">
+                  <span>Subtotal</span>
+                  <span id="chk-subtotal">€ 0.00</span>
+                </div>
+                <div class="totals-row">
+                  <span>Shipping</span>
+                  <span>Complimentary</span>
+                </div>
+                <div
+                  class="totals-row discount-row"
+                  style="display: none; color: #008080"
+                >
+                  <span>Discount (10%)</span>
+                  <span id="chk-discount">- € 0.00</span>
+                </div>
+                <div class="totals-row final-total-row">
+                  <span>Total</span>
+                  <span id="chk-final-total">€ 0.00</span>
+                </div>
+              </div>
+
+              <div class="customs-agreement-box">
+                <label class="custom-checkbox-label">
+                  <input
+                    type="checkbox"
+                    id="customs-check"
+                    name="customs_agreement"
+                    required
+                  />
+                  <span class="custom-checkmark"></span>
+                  <span class="checkbox-text"
+                    >I agree to potential additional charges due to customs
+                    duties upon delivery, in accordance with the laws of the
+                    recipient's country.</span
+                  >
+                </label>
+              </div>
+
+              <button
+                type="submit"
+                class="btn-primary"
+                id="submit-order-btn"
+                style="width: 100%; margin-top: 24px"
+              >
+                Submit Order
+              </button>
+            </div>
+          </aside>
+        </form>
+      </section>
+    </main>
+
+    <div class="country-modal-overlay" id="country-modal-overlay">
+      <div class="country-modal">
+        <div class="country-modal-header">
+          <h3 class="country-modal-title">Choose a country</h3>
+          <button
+            type="button"
+            class="country-modal-close"
+            id="close-country-modal"
+          >
+            &times;
+          </button>
+        </div>
+
+        <div class="country-modal-search">
+          <input
+            type="text"
+            id="country-search-input"
+            placeholder="Search by country"
+            autocomplete="off"
+          />
+          <svg
+            class="search-icon"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+          >
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </div>
+
+        <div class="country-modal-list" id="country-list-container"></div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+    <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=EUR&locale=en_US&disable-funding=card"></script>
+    <script type="module" src="/src/js/checkout.js"></script>
+  </body>
+</html>
