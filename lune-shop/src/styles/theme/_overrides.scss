@@ -216,7 +216,7 @@
 
 [data-theme="dark"] {
   .about-hero-text span.highlighted-text {
-    color: lighten(#7060d8, 15%);
+    color: scale-color(#7060d8, $lightness: 15%);
   }
 }
 
