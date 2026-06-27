@@ -1,5 +1,3 @@
-@use "sass:color";
-
 [data-theme="dark"] .logo-light {
   display: none;
 }
@@ -218,7 +216,7 @@
 
 [data-theme="dark"] {
   .about-hero-text span.highlighted-text {
-    color: scale-color(#7060d8, $lightness: 15%);
+    color: #8c7ee0;
   }
 }
 
